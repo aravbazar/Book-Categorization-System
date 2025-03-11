@@ -14,6 +14,10 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
+// Use book routes
+const bookRoutes = require('./routes/bookRoutes'); // Added this
+app.use('/api', bookRoutes); // Added this
+
 // Default route
 app.get('/', (req, res) => {
     res.send('Welcome to the Book Categorization System API!');
